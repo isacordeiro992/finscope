@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FinScope — Explore the Economics of Investing</title>
+<style>
+:root{--bg:#f5f7fa;--card:#fff;--ink:#0b1f3a;--mut:#5b6b80;--line:#dde3ec;--g:#12805a;--c1:#0b3d91;--c2:#1f9d6b;--c3:#b7791f;--er:#b42318;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1424;--card:#111f36;--ink:#e8eef7;--mut:#9fb0c6;--line:#22344f;--g:#4ad295;--c1:#6ea8ff;--c2:#4ad295;--c3:#f2b84b;--er:#ff8a80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a1424;--card:#111f36;--ink:#e8eef7;--mut:#9fb0c6;--line:#22344f;--g:#4ad295;--c1:#6ea8ff;--c2:#4ad295;--c3:#f2b84b;--er:#ff8a80;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:#0b1f3a}
+header{background:#0b1f3a;color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:9}
+.w{max-width:1040px;margin:0 auto;padding:0 16px}
+.hd{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;padding:10px 16px}
+.lg0{font-size:20px;font-weight:600}.lg0 span{color:#4ad295}
+nav{display:flex;flex-wrap:wrap;gap:2px 14px;flex:1}
+nav a{color:#cfd9e8;text-decoration:none;font-size:14px;padding:4px 2px;border-bottom:2px solid transparent}
+nav a:hover,nav a[aria-current=page]{color:#fff;border-color:#4ad295}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid #4ad295;outline-offset:2px}
+button,.btn{font:inherit;cursor:pointer;border-radius:8px;border:1px solid #4ad295;background:transparent;color:#fff;padding:4px 12px}
+.btn{display:inline-block;background:#1f9d6b;border-color:#1f9d6b;text-decoration:none;padding:8px 18px;margin-top:8px}
+main{padding:20px 16px 40px;max-width:1040px;margin:0 auto}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:.2em 0}h2{font-size:22px;margin:1.4em 0 .5em}h3{font-size:16px;margin:0 0 6px}
+.hero{background:#0b1f3a;color:#fff;border-radius:16px;padding:32px 24px;margin-bottom:8px}.hero p{color:#cfd9e8;max-width:620px}.tag{color:#4ad295!important;font-size:14px;margin:0}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+.g .c{margin:0}
+.mut{color:var(--mut);font-size:14px}.big{font-size:28px;font-weight:600;color:var(--g)}.na{font-size:18px;color:var(--mut)}
+label{display:flex;flex-direction:column;font-size:14px;gap:4px;color:var(--mut)}
+input,select,textarea{font:inherit;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);min-width:0}
+.ck{flex-direction:row;align-items:center;gap:8px}.ck input{width:auto}
+dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:14px}dt{color:var(--mut)}dd{margin:0;text-align:right;font-weight:600}
+.er{color:var(--er);min-height:1.4em;font-weight:600}
+.sc{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:6px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}th:first-child,td:first-child{text-align:left}
+.lgd{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--mut)}.lgd i{display:inline-block;width:26px;vertical-align:middle;margin-right:6px}
+.demo{background:#fff3cd;color:#5c4400;border:1px dashed #b38600;border-radius:8px;padding:6px 10px;font-size:14px;font-weight:600;display:inline-block;margin-bottom:8px}
+details{border-top:1px solid var(--line);padding:8px 0}summary{cursor:pointer;font-weight:600}
+footer{border-top:1px solid var(--line);padding:16px;text-align:center;font-size:13px;color:var(--mut)}
+@media(max-width:640px){header{position:static}.hd{padding:8px 12px}nav{order:3;flex:0 0 100%;flex-wrap:nowrap;overflow-x:auto;white-space:nowrap;padding-bottom:4px}#ch,#wch,#dch,#ich{overflow-x:auto}#ch svg,#wch svg,#dch svg,#ich svg{min-width:560px}}
+@media(prefers-reduced-motion:no-preference){section{animation:f .25s ease}@keyframes f{from{opacity:0}}}
+</style>
+</head>
+<body>
+<header><div class="hd"><b class="lg0">Fin<span>Scope</span></b>
+<nav aria-label="Menu"><a href="#home">Home</a><a href="#sim">Investment Simulator</a><a href="#data">Market Data</a><a href="#whatif">What If?</a><a href="#lib" data-i="n_lib"></a><a href="#research">Research &amp; Insights</a><a href="#about">About the Project</a></nav>
+<button id="lb" type="button"></button></div></header>
+<main>
+<section id="home"><div class="hero"><p class="tag">FinScope — Explore the Economics of Investing</p><h1>Understand money. Explore the markets.</h1><p data-i="hero_s"></p><a class="btn" href="#sim" data-i="cta"></a></div>
+<h2 data-i="ind_h"></h2><div class="g" id="ind"></div><p class="mut" data-i="ind_note"></p></section>
+
+<section id="sim" hidden><h2>Investment Simulator</h2>
+<div class="c"><div class="g">
+<label><span data-i="type"></span><select id="type"><option>LCI</option><option>LCA</option><option>CDB</option><option value="GEN" data-i="gen"></option></select></label>
+<label><span data-i="init"></span><input id="init" type="number" min="0" step="100" value="10000"></label>
+<label><span data-i="term"></span><input id="term" type="number" min="1" step="1" value="5"></label>
+<label><span>&nbsp;</span><select id="unit" aria-label="Unidade"><option value="y" data-i="yrs"></option><option value="m" data-i="mos"></option></select></label>
+<label><span data-i="contrib"></span><input id="contrib" type="number" min="0" step="50" value="500"></label>
+<label><span data-i="mode"></span><select id="mode"><option value="fixed" data-i="fixed"></option><option value="cdi" data-i="pcdi"></option><option value="ipca" data-i="pipca"></option></select></label>
+<label id="cdiBox" hidden><span data-i="cdi"></span><input id="cdi" type="number" min="0" step="0.1" value="10"></label>
+<label><span data-i="profile"></span><select id="profile"><option value="cons" data-i="cons"></option><option value="mid" data-i="mid" selected></option><option value="cust" data-i="cust"></option></select></label>
+<label><span id="la"></span><input id="ra" type="number" step="0.1" value="8"></label>
+<label><span id="lb2"></span><input id="rb" type="number" step="0.1" value="10"></label>
+<label><span id="lc"></span><input id="rc" type="number" step="0.1" value="12"></label>
+<label><span data-i="inf"></span><input id="inf" type="number" min="0" step="0.1" value="4"></label>
+<label class="ck"><input id="ir" type="checkbox"><span data-i="ir"></span></label>
+</div></div>
+<p id="err" class="er" role="alert"></p>
+<div class="g" id="cards"></div>
+<div class="c" style="margin-top:14px"><h3 data-i="chart"></h3><div id="ch"></div><div id="lg" class="lgd"></div></div>
+<div class="c sc" id="tb"></div>
+<p class="mut" id="tnote"></p><p class="mut" data-i="conv"></p></section>
+
+<section id="data" hidden><h2>Market Data</h2><p data-i="md_p"></p><div class="g" id="ind2"></div>
+<h2 data-i="md_selic_h"></h2><div class="c"><div id="dch"></div><div id="dlg" class="lgd"></div><p class="mut" data-i="md_selic_n"></p><details><summary data-i="vd"></summary><div class="sc" id="dtab"></div></details></div>
+<h2 data-i="md_ipca_h"></h2><div class="c"><div id="ich"></div><div id="ilg" class="lgd"></div><p class="mut" data-i="md_ipca_n"></p><details><summary data-i="vd"></summary><div class="sc" id="itab"></div></details></div>
+<p class="mut" data-i="md_hist_src"></p></section>
+
+<section id="whatif" hidden><h2>What If?</h2>
+<div class="c"><div class="g">
+<label><span data-i="wr"></span><input id="wr" type="range" min="1" max="30" step="0.5" value="10"><b id="wrv"></b></label>
+<label><span data-i="wy"></span><input id="wy" type="range" min="1" max="30" value="5"><b id="wyv"></b></label>
+<label><span data-i="wi"></span><input id="wi" type="range" min="0" max="15" step="0.5" value="4"><b id="wiv"></b></label>
+<label><span data-i="wv"></span><input id="wv" type="range" min="1" max="25" step="0.5" value="12"><b id="wvv"></b></label>
+<label><span data-i="wd"></span><input id="wd" type="range" min="-3" max="3" step="0.25" value="-0.5"><b id="wdv"></b></label>
+</div></div>
+<div class="c"><div id="wch"></div><div id="wlg" class="lgd"></div></div>
+<div class="c"><h3 data-i="auto"></h3><p id="wtx"></p></div></section>
+
+<section id="lib" hidden><h2 data-i="lib_h"></h2><div class="c" id="arts"></div>
+<p class="mut" data-i="lib_more"></p><p class="mut"><a href="https://www.bcb.gov.br/controleinflacao/taxaselic" target="_blank" rel="noopener">Banco Central — Selic</a> · <a href="https://www.ibge.gov.br/explica/inflacao.php" target="_blank" rel="noopener">IBGE — Inflação</a> · <a href="https://www.b3.com.br" target="_blank" rel="noopener">B3</a></p></section>
+
+<section id="research" hidden><h2>Research &amp; Insights</h2><span class="demo" data-i="demo"></span><div class="c" id="rs"></div>
+<h2 data-i="radd"></h2><div class="c"><div class="g" id="rf"></div><p class="mut" data-i="rlocal"></p><button type="button" class="btn" id="rbtn" data-i="rbtn_t"></button></div><div id="rl"></div></section>
+
+<section id="about" hidden><h2>About the Project</h2><div class="c"><p data-i="ab_p"></p><div id="bio"></div><button type="button" class="btn" id="bbtn"></button></div></section>
+</main>
+<footer><p data-i="disc"></p><p id="tst"></p></footer>
+<script>
+const $=id=>document.getElementById(id);
+const brl=v=>new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(v);
+const pc=v=>new Intl.NumberFormat('pt-BR',{style:'percent',minimumFractionDigits:2,maximumFractionDigits:2}).format(v);
+const cp=v=>new Intl.NumberFormat('pt-BR',{notation:'compact',maximumFractionDigits:1}).format(v);
+let lang='pt';try{lang=localStorage.getItem('fs-lang')||'pt'}catch(e){}
+const L={pt:{n_lib:'Biblioteca',hero_s:'Uma plataforma educacional para explorar investimentos, juros e o funcionamento da economia.',cta:'Abrir simulador',ind_h:'Indicadores econômicos',ind_note:'Quando a consulta automática à fonte oficial não funciona, mostramos o último valor conferido manualmente, com data de referência e fonte. Nada aqui é inventado: confirme sempre no link oficial.',na:'Dados indisponíveis',snap:'Snapshot manual, conferido em',pipca:'IPCA + taxa fixa',spr:'Taxa fixa acima do IPCA (% a.a.)',ipn:'No modo IPCA + taxa fixa, o IPCA considerado é o valor do campo de inflação hipotética.',wv:'Taxa variável: início (% a.a.)',wd:'Variação por ano (p.p.)',varc:'Taxa variável hipotética',wvf:(c,v,a,d)=>`Na comparação com uma taxa variável hipotética (começando em ${a}% ao ano e mudando ${d.toLocaleString('pt-BR')} p.p. por ano), a taxa fixa chega a ${brl(c)} e a variável a ${brl(v)}. A diferença vem apenas das hipóteses escolhidas, não de uma previsão.`,radd:'Adicionar uma pesquisa',rtitle:'Título',rlocal:'A pesquisa fica salva só neste navegador. Para publicá-la para todos, peça a inclusão no código do site.',rbtn_t:'Adicionar pesquisa',rdraft:'Rascunho local',del:'Remover',bio_l:'Biografia, motivações, aprendizados e próximos objetivos (salva só neste navegador)',bio_e:'Editar biografia',bio_s:'Salvar biografia',src:'Fonte',upd:'Consultado em',ref:'Referência',
+type:'Tipo de investimento',gen:'Simulação genérica',init:'Valor inicial (R$)',term:'Prazo',yrs:'anos',mos:'meses',contrib:'Aporte mensal (R$)',mode:'Tipo de taxa',fixed:'Prefixada',pcdi:'% do CDI',cdi:'CDI anual hipotético (% a.a.)',profile:'Perfil de cenário (didático)',cons:'Conservador',mid:'Intermediário',cust:'Personalizado',inf:'Inflação anual hipotética (%)',ir:'Descontar IR regressivo (apenas CDB)',rate:'Taxa anual (% a.a.)',scn:'Cenário',hyp:'hipotética',
+inv:'Total investido',yld:'Rendimento estimado',fin:'Saldo final estimado',ret:'Rentabilidade acumulada',real:'Saldo em poder de compra de hoje',eff:'Taxa efetiva anual',tax:'IR estimado',
+gross:'Resultado bruto: não representa necessariamente o rendimento líquido, pois impostos e custos não estão configurados para este caso.',lci:'LCI/LCA: as condições dependem da oferta e das regras vigentes; a Selic não é a taxa de rendimento. Resultado bruto.',
+e1:'Informe valores monetários válidos (não negativos, com algum valor investido).',e2:'Informe um prazo inteiro entre 1 e 600 meses.',e3:'Informe taxas válidas (juros 0–100% a.a.; % do CDI até 300).',
+conv:'Convenção: a taxa anual é convertida em taxa mensal equivalente; os juros do mês incidem sobre o saldo anterior e o aporte entra no fim do mês. IR de CDB (opcional): tabela regressiva aplicada ao rendimento total pelo prazo total (simplificação didática). Tabela e gráfico mostram saldo bruto; as taxas A, B e C são exemplos hipotéticos.',
+chart:'Evolução do saldo (bruto)',invl:'Investido',per:'Período',
+md_p:'Os indicadores abaixo vêm de uma camada de dados separada (Data), que pode ser trocada por outra fonte ou por um backend. Se a consulta falhar, mostramos o último valor conferido manualmente (snapshot), com data e fonte, e o link oficial.',md_demo_h:'Exemplo de gráfico histórico',demo:'DEMONSTRAÇÃO — valores fictícios, não são dados reais',md_selic_h:'Meta Selic: decisões do Copom desde janeiro de 2025',md_selic_n:'Cada ponto é uma reunião do Copom; o eixo horizontal não é proporcional ao tempo. Dados reais, conferidos manualmente em 28/10/2026.',md_ipca_h:'Inflação oficial (IPCA) acumulada em 12 meses',md_ipca_n:'Dados reais do IBGE, conferidos manualmente em 28/10/2026 em fontes que reproduzem o IPCA. Nenhuma projeção aparece nestes gráficos.',md_hist_src:'Fontes oficiais: Banco Central do Brasil (Copom) e IBGE (IPCA). Confira os valores nos links dos cards.',selS:'Meta Selic (% a.a.)',ipS:'IPCA em 12 meses (%)',vd:'Ver dados em tabela',dt:'Decisão',mt:'Mês',
+wr:'Taxa hipotética (% a.a.)',wy:'Prazo (anos)',wi:'Inflação hipotética (% a.a.)',simple:'Juros simples',comp:'Juros compostos',realc:'Compostos, em poder de compra de hoje',auto:'Conclusão automática',
+lib_h:'Biblioteca de educação financeira',lib_more:'Os artigos são educativos, usam números hipotéticos e não prometem retorno. Confira sempre as condições reais de cada oferta.',
+ab_p:'O FinScope é um projeto independente de educação financeira e exploração de dados econômicos, desenvolvido para aprender sobre mercados, matemática financeira e economia aplicada.',ab_ph:'[Espaço reservado para a autora: biografia, motivações, aprendizados e próximos objetivos.]',
+disc:'Este site tem finalidade exclusivamente educacional. As simulações são estimativas baseadas nas hipóteses selecionadas e não constituem recomendação de investimento.',
+wf:(r,y,s,c,x,rl)=>`Com R$ 1.000 a ${r}% ao ano por ${y} anos, os juros simples chegam a ${brl(s)} e os compostos a ${brl(c)}, uma diferença de ${brl(c-s)}. Com inflação hipotética, o saldo composto equivale a ${brl(rl)} em poder de compra de hoje. É uma descrição matemática das hipóteses, não uma previsão.`,
+arts:[['O que é a Selic','Taxa básica de juros da economia brasileira, definida pelo Copom do Banco Central. Serve de referência para outras taxas, mas não é automaticamente o rendimento de um investimento. Glossário: Copom — comitê que define a meta da Selic.'],['O que é o CDI','Taxa média dos empréstimos entre bancos, usada como referência em renda fixa. Um CDB de 100% do CDI rende, por hipótese, a própria taxa do CDI; 90% rende nove décimos dela.'],['Juros simples e compostos','R$ 1.000 a 10% ao ano por 2 anos: juros simples dão R$ 1.200; compostos dão R$ 1.000 × 1,10² = R$ 1.210. Nos compostos, os juros rendem juros.'],['Rentabilidade bruta × líquida','Bruta é o ganho antes de impostos e custos; líquida é o que sobra depois. Um CDB pode ter IR regressivo; LCI/LCA para pessoa física têm regras próprias, que devem ser conferidas na oferta.'],['O que é uma LCI','Letra de Crédito Imobiliário: título de renda fixa emitido por bancos e lastreado em créditos imobiliários. Você empresta dinheiro ao banco e recebe os juros combinados na oferta (prefixados, % do CDI ou atrelados a um índice). Exemplo hipotético: R$ 10.000 a 90% de um CDI de 10% a.a. rendem 9% a.a., ou R$ 10.900 brutos em 1 ano. As condições dependem da oferta e das regras vigentes; a Selic não é a taxa de uma LCI. Glossário: lastro — créditos que dão base ao título; carência — prazo mínimo sem resgate. Fontes: Banco Central do Brasil; B3.'],['O que é uma LCA','Letra de Crédito do Agronegócio: parecida com a LCI, mas lastreada em créditos do agronegócio. Exemplo hipotético: R$ 5.000 a 95% de um CDI de 10% a.a. rendem 9,5% a.a., ou R$ 5.475 brutos em 1 ano. Prazo, carência, liquidez e tributação dependem da oferta e da legislação vigente, e a Selic não é a taxa de uma LCA. Glossário: emissor — instituição que emite o título e deve pagá-lo. Fontes: Banco Central do Brasil; B3.'],['CDB, LCI e LCA: diferenças','Os três são títulos de renda fixa emitidos por instituições financeiras. O CDB capta recursos para o banco em geral; LCI e LCA são lastreadas em créditos imobiliários e do agronegócio. Em regra, o CDB tem IR regressivo, enquanto LCI e LCA para pessoa física costumam ser isentas, conforme a legislação vigente. Exemplo hipotético (1 ano, CDI de 10% a.a.): um CDB a 100% rende R$ 1.000 sobre R$ 10.000; com IR de 20% (prazo de 360 dias), sobram R$ 800, ou 8% líquidos. Uma LCI a 90% rende 9%, sem IR. Compare sempre o rendimento líquido e as condições reais. Fontes: Banco Central do Brasil; B3.'],['Inflação e poder de compra','Inflação é o aumento geral dos preços; no Brasil, o índice oficial é o IPCA, do IBGE. Se os preços sobem 5% em um ano, R$ 105 compram o que R$ 100 compravam antes. Um investimento de 6% nominais no mesmo período dá ganho real de cerca de 0,95%, pois 1,06 ÷ 1,05 ≈ 1,0095. Em 5 anos a 5% ao ano, R$ 100 mantêm o poder de compra de cerca de R$ 78,35. Glossário: taxa real — rendimento depois de descontada a inflação. Fontes: IBGE; Banco Central do Brasil.'],['Liquidez, prazo e risco de crédito','Liquidez é a facilidade de transformar o investimento em dinheiro sem perda relevante; prazo é o tempo até o vencimento; risco de crédito é a chance de o emissor não pagar. Exemplo hipotético: se você precisa de R$ 3.000 em 3 meses e o título tem carência de 6 meses, o dinheiro não estará disponível, mesmo com uma taxa atraente. Taxas mais altas podem refletir prazos maiores, menor liquidez ou maior risco, mas isso não é garantia de retorno. Glossário: vencimento — data final do título. Fontes: Banco Central do Brasil; B3.'],['Diversificação','Diversificar é distribuir o dinheiro entre ativos, emissores e prazos para reduzir a dependência de um único evento. Exemplo hipotético: se R$ 10.000 estão em um só emissor que não paga, a perda é de R$ 10.000. Divididos entre quatro emissores, com R$ 2.500 em cada, a falha de um deles causa perda de R$ 2.500, ou 25%. Diversificar reduz a concentração, mas não elimina o risco nem garante retorno. Glossário: concentração — grande parte do dinheiro em um só lugar. Fontes: Banco Central do Brasil; B3.']],
+rs:{t:'Como diferentes taxas afetam um investimento hipotético',s:'Comparação didática de R$ 1.000 em 5 anos a taxas hipotéticas.',q:'Quanto a taxa anual muda o saldo final de um investimento em 5 anos?',src:'Nenhum dado real: taxas fictícias escolhidas para demonstração.',m:'Juros compostos anuais, sem aportes, sem impostos: R$ 1.000 × (1 + taxa)^5.',a:'Cada 2 pontos percentuais a mais de taxa aumentam o saldo de forma crescente, por causa da capitalização.',l:'Ignora impostos, custos, inflação e risco; as taxas são hipotéticas.',c:'Em termos matemáticos, taxas maiores geram saldos maiores; isso não indica qual investimento será melhor no futuro.',r:'Referências: Banco Central do Brasil; IBGE; B3.',h:['Resumo','Pergunta de pesquisa','Fonte dos dados','Metodologia','Análise','Limitações','Conclusão','Referências'],tb:['Taxa (a.a.)','Saldo em 5 anos']}},
+en:{n_lib:'Library',hero_s:'An educational platform to explore investments, interest rates and how the economy works.',cta:'Open simulator',ind_h:'Economic indicators',ind_note:'When the automatic query to the official source does not work, we show the last manually checked value, with reference date and source. Nothing here is made up: always confirm on the official link.',na:'Data unavailable',snap:'Manual snapshot, checked on',pipca:'IPCA + fixed rate',spr:'Fixed rate above IPCA (% p.a.)',ipn:'In IPCA + fixed mode, the IPCA used is the value in the hypothetical inflation field.',wv:'Variable rate: start (% p.a.)',wd:'Change per year (p.p.)',varc:'Hypothetical variable rate',wvf:(c,v,a,d)=>`Compared with a hypothetical variable rate (starting at ${a}% a year and changing ${d} p.p. per year), the fixed rate reaches ${brl(c)} and the variable one ${brl(v)}. The gap comes only from the chosen assumptions, not from a forecast.`,radd:'Add a research piece',rtitle:'Title',rlocal:'The piece is saved only in this browser. To publish it for everyone, ask for it to be added to the site’s code.',rbtn_t:'Add research',rdraft:'Local draft',del:'Remove',bio_l:'Biography, motivations, learnings and next goals (saved only in this browser)',bio_e:'Edit biography',bio_s:'Save biography',src:'Source',upd:'Checked at',ref:'Reference',
+type:'Investment type',gen:'Generic simulation',init:'Initial amount (R$)',term:'Term',yrs:'years',mos:'months',contrib:'Monthly contribution (R$)',mode:'Rate type',fixed:'Fixed rate',pcdi:'% of CDI',cdi:'Hypothetical annual CDI (% p.a.)',profile:'Scenario profile (didactic)',cons:'Conservative',mid:'Intermediate',cust:'Custom',inf:'Hypothetical annual inflation (%)',ir:'Apply regressive income tax (CDB only)',rate:'Annual rate (% p.a.)',scn:'Scenario',hyp:'hypothetical',
+inv:'Total invested',yld:'Estimated earnings',fin:'Estimated final balance',ret:'Cumulative return',real:'Balance in today’s purchasing power',eff:'Effective annual rate',tax:'Estimated income tax',
+gross:'Gross result: it does not necessarily represent net returns, since taxes and costs are not configured for this case.',lci:'LCI/LCA: terms depend on the offer and current rules; the Selic rate is not their yield. Gross result.',
+e1:'Enter valid money values (non-negative, with some amount invested).',e2:'Enter a whole term between 1 and 600 months.',e3:'Enter valid rates (interest 0–100% p.a.; % of CDI up to 300).',
+conv:'Convention: the annual rate is converted to an equivalent monthly rate; each month’s interest applies to the previous balance and contributions are made at month end. Optional CDB tax: regressive table on total earnings by total term (didactic simplification). Table and chart show gross balance; rates A, B and C are hypothetical examples.',
+chart:'Balance over time (gross)',invl:'Invested',per:'Period',
+md_p:'The indicators come from a separate data layer (Data) that can be swapped for another source or a backend. If a query fails, we show the last manually checked value (snapshot), with date and source, and the official link.',md_demo_h:'Historical chart example',demo:'DEMO — fictitious values, not real data',md_selic_h:'Selic target: Copom decisions since January 2025',md_selic_n:'Each point is a Copom meeting; the horizontal axis is not proportional to time. Real data, manually checked on 28/10/2026.',md_ipca_h:'Official inflation (IPCA), 12-month cumulative',md_ipca_n:'Real IBGE data, manually checked on 28/10/2026 in sources that reproduce the IPCA. No projections appear in these charts.',md_hist_src:'Official sources: Central Bank of Brazil (Copom) and IBGE (IPCA). Check the values on the cards’ links.',selS:'Selic target (% p.a.)',ipS:'12-month IPCA (%)',vd:'View data as a table',dt:'Decision',mt:'Month',
+wr:'Hypothetical rate (% p.a.)',wy:'Term (years)',wi:'Hypothetical inflation (% p.a.)',simple:'Simple interest',comp:'Compound interest',realc:'Compound, in today’s purchasing power',auto:'Automatic conclusion',
+lib_h:'Financial education library',lib_more:'The articles are educational, use hypothetical numbers and promise no returns. Always check the real terms of each offer.',
+ab_p:'FinScope is an independent project on financial education and economic data exploration, built to learn about markets, financial mathematics and applied economics.',ab_ph:'[Space reserved for the author: biography, motivations, learnings and next goals.]',
+disc:'This site is for educational purposes only. Simulations are estimates based on the selected assumptions and do not constitute investment advice.',
+wf:(r,y,s,c,x,rl)=>`With R$ 1,000 at ${r}% a year for ${y} years, simple interest reaches ${brl(s)} and compound interest ${brl(c)}, a difference of ${brl(c-s)}. With the hypothetical inflation, the compound balance equals ${brl(rl)} in today’s purchasing power. This describes the math of the assumptions, not a forecast.`,
+arts:[['What is the Selic rate','Brazil’s benchmark interest rate, set by the Central Bank’s Copom. It guides other rates, but it is not automatically an investment’s yield. Glossary: Copom — the committee that sets the Selic target.'],['What is the CDI','The average rate of interbank loans, used as a fixed-income benchmark. A CDB paying 100% of CDI yields, by assumption, the CDI rate itself; 90% yields nine tenths of it.'],['Simple vs compound interest','R$ 1,000 at 10% a year for 2 years: simple interest gives R$ 1,200; compound gives R$ 1,000 × 1.10² = R$ 1,210. With compounding, interest earns interest.'],['Gross vs net return','Gross is the gain before taxes and costs; net is what remains. A CDB may carry regressive income tax; LCI/LCA for individuals have their own rules, to be checked in each offer.'],['What is an LCI','Letra de Crédito Imobiliário (real estate credit note): a fixed-income security issued by banks and backed by real estate loans. You lend money to the bank and receive the interest agreed in the offer (fixed, % of CDI or index-linked). Hypothetical example: R$ 10,000 at 90% of a 10% p.a. CDI earns 9% p.a., or R$ 10,900 gross in 1 year. Terms depend on the offer and current rules; the Selic rate is not an LCI’s yield. Glossary: backing — the loans that support the security; grace period — minimum time without redemption. Sources: Central Bank of Brazil; B3.'],['What is an LCA','Letra de Crédito do Agronegócio (agribusiness credit note): similar to an LCI, but backed by agribusiness loans. Hypothetical example: R$ 5,000 at 95% of a 10% p.a. CDI earns 9.5% p.a., or R$ 5,475 gross in 1 year. Term, grace period, liquidity and taxation depend on the offer and current law, and the Selic rate is not an LCA’s yield. Glossary: issuer — the institution that issues the security and must repay it. Sources: Central Bank of Brazil; B3.'],['CDB, LCI and LCA: differences','All three are fixed-income securities issued by financial institutions. A CDB raises funds for the bank in general; LCI and LCA are backed by real estate and agribusiness loans. As a rule, a CDB carries regressive income tax, while LCI and LCA for individuals are usually exempt, under current law. Hypothetical example (1 year, 10% p.a. CDI): a CDB at 100% earns R$ 1,000 on R$ 10,000; with 20% tax (360-day term), R$ 800 remains, or 8% net. An LCI at 90% earns 9%, with no tax. Always compare net yield and the real terms. Sources: Central Bank of Brazil; B3.'],['Inflation and purchasing power','Inflation is the general rise in prices; in Brazil the official index is the IPCA, from IBGE. If prices rise 5% in a year, R$ 105 buys what R$ 100 used to. An investment earning 6% nominal over the same period gives a real gain of about 0.95%, since 1.06 ÷ 1.05 ≈ 1.0095. Over 5 years at 5% a year, R$ 100 keeps the purchasing power of about R$ 78.35. Glossary: real rate — return after discounting inflation. Sources: IBGE; Central Bank of Brazil.'],['Liquidity, term and credit risk','Liquidity is how easily an investment turns into cash without a significant loss; term is the time until maturity; credit risk is the chance the issuer does not pay. Hypothetical example: if you need R$ 3,000 in 3 months and the security has a 6-month grace period, the money will not be available, even with an attractive rate. Higher rates may reflect longer terms, lower liquidity or higher risk, but that is no guarantee of return. Glossary: maturity — the security’s final date. Sources: Central Bank of Brazil; B3.'],['Diversification','Diversifying means spreading money across assets, issuers and terms to reduce dependence on a single event. Hypothetical example: if R$ 10,000 sits with one issuer that defaults, the loss is R$ 10,000. Split among four issuers with R$ 2,500 each, one default causes a loss of R$ 2,500, or 25%. Diversification reduces concentration, but it does not remove risk or guarantee returns. Glossary: concentration — much of the money in one place. Sources: Central Bank of Brazil; B3.']],
+rs:{t:'How different rates affect a hypothetical investment',s:'Didactic comparison of R$ 1,000 over 5 years at hypothetical rates.',q:'How much does the annual rate change the final balance after 5 years?',src:'No real data: fictitious rates chosen for demonstration.',m:'Annual compound interest, no contributions, no taxes: R$ 1,000 × (1 + rate)^5.',a:'Each extra 2 percentage points of rate raises the balance by a growing amount because of compounding.',l:'Ignores taxes, costs, inflation and risk; the rates are hypothetical.',c:'Mathematically, higher rates produce higher balances; this does not say which investment will be better in the future.',r:'References: Central Bank of Brazil; IBGE; B3.',h:['Summary','Research question','Data source','Methodology','Analysis','Limitations','Conclusion','References'],tb:['Rate (p.a.)','Balance after 5 years']}}};
+const t=k=>L[lang][k]??k;
+const mRate=a=>Math.pow(1+a/100,1/12)-1;
+const irRate=d=>d<=180?.225:d<=360?.2:d<=720?.175:.15;
+function sim(o,r){const a=o.mode==='cdi'?o.cdi*r/100:o.mode==='ipca'?((1+o.inf/100)*(1+r/100)-1)*100:r,m=mRate(a);let b=o.init,inv=o.init;const rows=[[inv,b]];
+for(let i=1;i<=o.n;i++){b=b*(1+m)+o.contrib;inv+=o.contrib;rows.push([inv,b])}
+const y=b-inv,tax=(o.ir&&o.type==='CDB'&&y>0)?y*irRate(o.n*30):0,fin=b-tax;
+return{a,rows,inv,tax,y:y-tax,fin,ret:inv?fin/inv-1:0,real:fin/Math.pow(1+o.inf/100,o.n/12)}}
+function tests(){const eq=(a,b,e=1e-6)=>Math.abs(a-b)<e;const o={init:1000,contrib:0,n:60,mode:'fixed',cdi:0,inf:0,ir:false,type:'GEN'};const m=mRate(12);
+const T=[eq(1000*Math.pow(1.1,5),1610.51),eq(sim(o,10).fin,1610.51),eq(Math.pow(1+mRate(10),12),1.1,1e-12),eq(sim({...o,init:0,contrib:100,n:24},12).fin,100*(Math.pow(1+m,24)-1)/m),irRate(180)===.225&&irRate(181)===.2&&irRate(721)===.15,eq(sim({...o,n:12,inf:10},10).real,1000,1e-9),eq(sim({...o,mode:'ipca',inf:5},3).a,8.15,1e-9)];
+const ok=T.filter(Boolean).length;console.log('FinScope tests',T);return ok+'/'+T.length}
+function chart(el,lg,series,xmax,xl,step,mn=0,al,mxv){const W=680,H=260,l=64,r=12,tp=12,b=28,mx=mxv||Math.max(1,...series.flatMap(s=>s.v));
+const X=i=>l+i/Math.max(xmax,1)*(W-l-r),Y=v=>tp+(1-(v-mn)/(mx-mn))*(H-tp-b);let s=`<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${al||t('chart')}" style="font-family:inherit">`;
+for(let k=0;k<=4;k++){const y=Y(mn+(mx-mn)*k/4);s+=`<line x1="${l}" x2="${W-r}" y1="${y}" y2="${y}" stroke="var(--line)"/><text x="${l-6}" y="${y+4}" text-anchor="end" font-size="11" fill="var(--mut)">${cp(mn+(mx-mn)*k/4)}</text>`}
+const st=step||xmax/4;for(let q=0;q<=xmax+1e-9;q+=st){const i=Math.round(q);s+=`<text x="${X(i)}" y="${H-8}" text-anchor="${X(i)>W-34?'end':'middle'}" font-size="11" fill="var(--mut)">${xl(i)}</text>`}
+series.forEach(q=>{s+=`<polyline fill="none" stroke="var(${q.c})" stroke-width="2.5" ${q.d?`stroke-dasharray="${q.d}"`:''} points="${q.v.flatMap((v,i)=>q.st&&i?[X(i)+','+Y(q.v[i-1]),X(i)+','+Y(v)]:[X(i)+','+Y(v)]).join(' ')}"/>`});
+el.innerHTML=s+'</svg>';lg.innerHTML=series.map(q=>`<span><i style="border-top:3px ${q.d?'dashed':'solid'} var(${q.c})"></i>${q.n}</span>`).join('')}
+const Data={async latest(id){const r=await fetch(`https://api.bcb.gov.br/dados/serie/bcdata.sgs.${id}/dados/ultimos/1?formato=json`,{signal:AbortSignal.timeout(6000)});if(!r.ok)throw 0;const j=await r.json();return{v:parseFloat(j[0].valor),ref:j[0].data,at:new Date()}}};
+const IND=[['selic','Taxa Selic',432,'Banco Central do Brasil (SGS 432)','https://www.bcb.gov.br/controleinflacao/taxaselic','% a.a.'],['ipca','Inflação (IPCA)',433,'IBGE, via API do Banco Central (SGS 433)','https://www.ibge.gov.br/explica/inflacao.php','% m/m'],['cdi','CDI',4389,'B3 / Banco Central (SGS 4389)','https://www.b3.com.br','% a.a.']];
+const SNAP={selic:{v:'13,75% a.a.',ref:'17/09/2026 (Copom, 281ª reunião)'},ipca:{v:'0,82% m/m · 4,58% em 12 meses',ref:'setembro/2026 (divulgado em 09/10/2026)'},cdi:{v:'13,65% a.a.',ref:'24/09/2026 (base 252)'}};
+const SNAP_AT='28/10/2026';
+function snapHtml(k){const d=SNAP[k];return `<div class="big" style="font-size:22px">${d.v}</div><div class="mut">${t('ref')}: ${d.ref}<br><b>${t('snap')}</b> ${SNAP_AT}</div>`}
+const SEL=[['29/01/25',13.25],['19/03/25',14.25],['07/05/25',14.75],['18/06/25',15],['30/07/25',15],['17/09/25',15],['05/11/25',15],['10/12/25',15],['28/01/26',15],['18/03/26',14.75],['29/04/26',14.5],['17/06/26',14.25],['05/08/26',14],['16/09/26',13.75]];
+const IP=[['set/25',5.17],['out/25',4.68],['nov/25',4.46],['dez/25',4.26],['jan/26',4.44],['fev/26',3.81],['mar/26',4.14],['abr/26',4.39],['mai/26',4.72],['jun/26',4.64],['jul/26',4.44],['ago/26',4.22],['set/26',4.58]];
+const tab=(rows,a,b)=>`<table><thead><tr><th>${a}</th><th>${b}</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r[0]}</td><td>${r[1].toLocaleString('pt-BR',{minimumFractionDigits:2})}</td></tr>`).join('')}</tbody></table>`;
+const MD={};
+function renderInd(){const h=IND.map(([k,n,,s,u,un])=>{const d=MD[k];const nm=lang==='en'?{selic:'Selic rate',ipca:'Inflation (IPCA)',cdi:'CDI'}[k]:n;
+return `<div class="c"><h3>${nm}</h3>${d?`<div class="big">${d.v.toLocaleString('pt-BR')} ${un}</div><div class="mut">${t('ref')}: ${d.ref}<br>${t('upd')}: ${d.at.toLocaleString('pt-BR')}</div>`:(d===undefined?'<div class="na">…</div>':SNAP[k]?snapHtml(k):`<div class="na">${t('na')}</div>`)}<div class="mut">${t('src')}: <a href="${u}" target="_blank" rel="noopener">${s}</a></div></div>`}).join('');$('ind').innerHTML=h;$('ind2').innerHTML=h}
+async function loadInd(){for(const x of IND){try{MD[x[0]]=await Data.latest(x[2])}catch(e){MD[x[0]]=null}renderInd()}}
+function read(){const g=id=>$(id).value,nm=id=>parseFloat(String(g(id)).replace(',','.'));
+const o={type:g('type'),init:nm('init'),contrib:g('contrib')===''?0:nm('contrib'),term:nm('term'),mode:g('mode'),cdi:nm('cdi'),inf:g('inf')===''?0:nm('inf'),ir:$('ir').checked};
+o.n=Math.round(g('unit')==='y'?o.term*12:o.term);o.r=['ra','rb','rc'].map(nm);return o}
+function valid(o){if(!(o.init>=0)||!(o.contrib>=0)||o.init+o.contrib<=0)return'e1';if(!(o.n>=1&&o.n<=600))return'e2';
+const mx=o.mode==='cdi'?300:100;if(o.r.some(x=>!(x>=0&&x<=mx))||!(o.cdi>=0&&o.cdi<=100)||!(o.inf>=0&&o.inf<=100))return'e3';return''}
+function renderSim(){const o=read(),e=valid(o);$('err').textContent=e?t(e):'';if(e)return;
+const res=o.r.map(r=>sim(o,r)),N=['A','B','C'],row=(k,v)=>`<dt>${t(k)}</dt><dd>${v}</dd>`;
+$('cards').innerHTML=res.map((s,i)=>`<div class="c"><h3>${t('scn')} ${N[i]} · ${o.r[i].toLocaleString('pt-BR')}${o.mode==='cdi'?'% CDI':o.mode==='ipca'?'% a.a. + IPCA':'% a.a.'} <span class="mut">(${t('hyp')})</span></h3><dl>${row('inv',brl(s.inv))}${row('yld',brl(s.y))}${row('fin',brl(s.fin))}${row('ret',pc(s.ret))}${row('real',brl(s.real))}${row('eff',pc(s.a/100))}${s.tax>0?row('tax',brl(s.tax)):''}</dl></div>`).join('');
+const xl=i=>o.n>24?(i/12).toFixed(i%12?1:0)+(lang==='en'?'y':'a'):i+'m';
+chart($('ch'),$('lg'),[...res.map((s,i)=>({n:`${t('scn')} ${N[i]}`,v:s.rows.map(r=>r[1]),c:'--c'+(i+1),d:i==2?'2 4':i==1?'8 3':''})),{n:t('invl'),v:res[0].rows.map(r=>r[0]),c:'--mut',d:'1 4'}],o.n,xl,o.n>24?12*Math.ceil(o.n/60):0);
+const idx=[];if(o.n<=24)for(let i=1;i<=o.n;i++)idx.push(i);else{for(let i=12;i<=o.n;i+=12)idx.push(i);if(o.n%12)idx.push(o.n)}
+$('tb').innerHTML=`<table><thead><tr><th>${t('per')}</th><th>${t('invl')}</th>${N.map(n=>`<th>${t('scn')} ${n}</th>`).join('')}</tr></thead><tbody>${idx.map(i=>`<tr><td>${o.n>24?xl(i):i+'m'}</td><td>${brl(res[0].rows[i][0])}</td>${res.map(s=>`<td>${brl(s.rows[i][1])}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+$('tnote').textContent=(o.type==='LCI'||o.type==='LCA'?t('lci'):(o.type==='CDB'&&o.ir?'':t('gross')))+(o.mode==='ipca'?' '+t('ipn'):'')}
+function labels(){const u=t({cdi:'pcdi',ipca:'spr'}[$('mode').value]||'rate');['la','lb2','lc'].forEach((id,i)=>$(id).textContent=`${t('scn')} ${'ABC'[i]} — ${u} (${t('hyp')})`);$('cdiBox').hidden=$('mode').value!=='cdi';$('ir').disabled=$('type').value!=='CDB'}
+function renderWhat(){const r=+$('wr').value,y=+$('wy').value,i=+$('wi').value;$('wrv').textContent=r+'%';$('wyv').textContent=y;$('wiv').textContent=i+'%';const va=+$('wv').value,vd=+$('wd').value;$('wvv').textContent=va+'%';$('wdv').textContent=vd+' p.p.';
+const S=[],C=[],R=[],V=[1000];for(let k=0;k<=y;k++){if(k)V.push(V[k-1]*(1+Math.max(0,va+vd*(k-1))/100));S.push(1000*(1+r/100*k));C.push(1000*Math.pow(1+r/100,k));R.push(C[k]/Math.pow(1+i/100,k))}
+chart($('wch'),$('wlg'),[{n:t('simple'),v:S,c:'--c3',d:'6 3'},{n:t('comp'),v:C,c:'--c2'},{n:t('realc'),v:R,c:'--c1',d:'2 4'},{n:t('varc'),v:V,c:'--mut',d:'1 3'}],y,k=>k+(lang==='en'?'y':'a'),Math.ceil(y/6));
+$('wtx').textContent=L[lang].wf(r,y,S[y],C[y],0,R[y])+' '+L[lang].wvf(C[y],V[y],va,vd)}
+function renderStatic(){$('arts').innerHTML=L[lang].arts.map(a=>`<details><summary>${a[0]}</summary><p>${a[1]}</p></details>`).join('');
+const R=L[lang].rs,h=R.h,v=[0,1,2,3,4,5,6,7].map(i=>[h[i],[R.s,R.q,R.src,R.m,R.a,R.l,R.c,R.r][i]]);
+$('rs').innerHTML=`<h3 style="font-size:19px">${R.t}</h3>`+v.map(x=>`<p><b>${x[0]}.</b> ${x[1]}</p>`).join('')+`<div class="sc"><table><thead><tr><th>${R.tb[0]}</th><th>${R.tb[1]}</th></tr></thead><tbody>${[6,8,10,12].map(x=>`<tr><td>${x}%</td><td>${brl(1000*Math.pow(1+x/100,5))}</td></tr>`).join('')}</tbody></table></div>`;
+chart($('dch'),$('dlg'),[{n:t('selS'),v:SEL.map(x=>x[1]),c:'--c1',st:1}],SEL.length-1,k=>SEL[k][0].slice(3),3,13,t('selS'),15);
+chart($('ich'),$('ilg'),[{n:t('ipS'),v:IP.map(x=>x[1]),c:'--c2'}],IP.length-1,k=>IP[k][0],3,3,t('ipS'),5.4);
+$('dtab').innerHTML=tab(SEL,t('dt'),t('selS'));$('itab').innerHTML=tab(IP,t('mt'),t('ipS'))}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function resLoad(){try{return JSON.parse(localStorage.getItem('fs-res')||'[]')}catch(e){return[]}}
+function resSave(a){try{localStorage.setItem('fs-res',JSON.stringify(a))}catch(e){}}
+function renderRes(){const hs=[t('rtitle'),...L[lang].rs.h];
+$('rf').innerHTML=hs.map((h,i)=>`<label>${h}${i?`<textarea id="rf${i}" rows="3"></textarea>`:`<input id="rf0" maxlength="120">`}</label>`).join('');
+$('rl').innerHTML=resLoad().map((e,n)=>`<div class="c"><span class="demo">${t('rdraft')}</span><h3 style="font-size:19px">${esc(e[0])}</h3>${hs.slice(1).map((h,i)=>e[i+1]?`<p><b>${h}.</b> ${esc(e[i+1])}</p>`:'').join('')}<button type="button" data-del="${n}" style="color:var(--ink);border-color:var(--line)">${t('del')}</button></div>`).join('')}
+$('rbtn').onclick=()=>{const v=[...Array(9).keys()].map(i=>$('rf'+i).value.trim());if(!v[0]){$('rf0').focus();return}const a=resLoad();a.push(v);resSave(a);renderRes()};
+$('rl').onclick=e=>{const n=e.target.dataset&&e.target.dataset.del;if(n===undefined)return;const a=resLoad();a.splice(+n,1);resSave(a);renderRes()};
+let editBio=false;
+function renderAbout(){let b='';try{b=localStorage.getItem('fs-bio')||''}catch(e){}
+$('bio').innerHTML=editBio?`<label>${t('bio_l')}<textarea id="bt" rows="6">${esc(b)}</textarea></label>`:(b?`<p>${esc(b).replace(/\n/g,'<br>')}</p>`:`<p class="mut">${t('ab_ph')}</p>`);$('bbtn').textContent=t(editBio?'bio_s':'bio_e')}
+$('bbtn').onclick=()=>{if(editBio){try{localStorage.setItem('fs-bio',$('bt').value)}catch(e){}}editBio=!editBio;renderAbout()};
+function apply(){document.documentElement.lang=lang==='pt'?'pt-BR':'en';document.querySelectorAll('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));$('lb').textContent=lang==='pt'?'EN':'PT';$('lb').setAttribute('aria-label',lang==='pt'?'Switch to English':'Mudar para português');
+labels();renderInd();renderSim();renderWhat();renderStatic();renderRes();renderAbout()}
+const V=['home','sim','data','whatif','lib','research','about'];
+function route(){const h=location.hash.slice(1),v=V.includes(h)?h:'home';V.forEach(x=>$(x).hidden=x!==v);document.querySelectorAll('nav a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+v?'page':'false'));scrollTo(0,0)}
+addEventListener('hashchange',route);
+$('lb').onclick=()=>{lang=lang==='pt'?'en':'pt';try{localStorage.setItem('fs-lang',lang)}catch(e){}apply()};
+const P={cons:[6,8,10],mid:[8,10,12]};
+$('profile').onchange=e=>{const p=P[e.target.value];if(p){['ra','rb','rc'].forEach((id,i)=>$(id).value=p[i])}renderSim()};
+['ra','rb','rc'].forEach(id=>$(id).addEventListener('input',()=>{$('profile').value='cust'}));
+['type','init','term','unit','contrib','mode','cdi','ra','rb','rc','inf','ir','profile'].forEach(id=>$(id).addEventListener('input',()=>{labels();renderSim()}));
+['wr','wy','wi','wv','wd'].forEach(id=>$(id).addEventListener('input',renderWhat));
+apply();route();$('tst').textContent='Testes das fórmulas / Formula tests: '+tests();loadInd();
+</script>
+</body>
+</html>
